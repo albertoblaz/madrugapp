@@ -1,0 +1,25 @@
+<h1>Activities</h1>
+
+<span>Project plan</span>
+<span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Contractor</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activities.each do |act| %>
+      <tr>
+        <td><%= act.id %></td>
+        <td><%= act.name %></td>
+        <td><%= nil %></td>
+        <td><%= act.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
