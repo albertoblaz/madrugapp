@@ -3,6 +3,10 @@
 <span>Project plan</span>
 <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
 
+<span style="background: green; color:white;">
+  <%= link_to 'New', new_project_activity_path %>
+</span>
+
 <table>
   <thead>
     <tr>

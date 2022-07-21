@@ -1,0 +1,19 @@
+<h1>Create activity</h1>
+
+<%= form_with model: [ @project, @project.activities.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :ui_color %><br>
+    <%= form.text_area :ui_color %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
