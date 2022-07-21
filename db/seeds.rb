@@ -20,3 +20,14 @@ Activity.create(name: "Ventanas", description: "", ui_color: "red", project_id: 
 Activity.create(name: "Electricidad", description: "", ui_color: "yellow", project_id: project.id)
 Activity.create(name: "Tuberias", description: "", ui_color: "blue", project_id: project.id)
 Activity.create(name: "Cerraduras", description: "", ui_color: "black", project_id: project.id)
+
+vivienda1 = BuildingUnit.create(name: "Vivienda 1", description: "", ui_color: "grey", project_id: project.id)
+vivienda2 = BuildingUnit.create(name: "Vivienda 2", description: "", ui_color: "grey", project_id: project.id)
+
+vivienda1.children.create(name: "Piso bajo", description: "", ui_color: "grey", project_id: project.id)
+vivienda1.children.create(name: "Piso primero", description: "", ui_color: "grey", project_id: project.id)
+vivienda1.children.create(name: "Piso segundo", description: "", ui_color: "grey", project_id: project.id)
+
+vivienda2.children.create(name: "Piso bajo", description: "", ui_color: "grey", project_id: project.id)
+vivienda2.children.create(name: "Piso primero", description: "", ui_color: "grey", project_id: project.id)
+vivienda2.children.create(name: "Piso segundo", description: "", ui_color: "grey", project_id: project.id)
