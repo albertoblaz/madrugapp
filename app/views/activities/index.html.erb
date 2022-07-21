@@ -13,13 +13,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @activities.each do |act| %>
-      <tr>
-        <td><%= act.id %></td>
-        <td><%= act.name %></td>
-        <td><%= nil %></td>
-        <td><%= act.description %></td>
-      </tr>
-    <% end %>
+    <%= render @project.activities %>
   </tbody>
 </table>
