@@ -14,6 +14,13 @@ class ActivitiesController < ApplicationController
     redirect_to project_activities_path
   end
 
+  def destroy
+    @project = Project.find(params[:project_id])
+    @activity = @project.activities.find(params[:id])
+    @activity.destroy
+    redirect_to project_activities_path
+  end
+
   private
 
   def create_activity_params
