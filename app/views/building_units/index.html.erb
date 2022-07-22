@@ -3,4 +3,37 @@
 <span>Project plan</span>
 <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
 
-<%= render @project.building_units %>
+<table>
+  <thead>
+    <tr>
+      <%# First column %>
+      <th>Building Unit</th>
+
+      <%# Rest of columns (dates) %>
+      <% date_ptr = @project.start_date %>
+      <% while date_ptr <= @project.planned_end_date do %>
+        <th><%= date_ptr.day %></th>
+        <% date_ptr = date_ptr.next_day %>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @building_units.each do |bu| %>
+      <tr>
+        <%# First column %>
+        <td><%= bu.name %></td>
+
+        <%# Rest of columns (dates) %>
+        <% date_ptr = @project.start_date %>
+        <% while date_ptr <= @project.planned_end_date do %>
+          <td>
+            <button>
+              -
+            </button>
+          </td>
+          <% date_ptr = date_ptr.next_day %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
