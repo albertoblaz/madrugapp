@@ -14,12 +14,54 @@ project = Project.create(
   planned_end_date: DateTime.now.end_of_month
 )
 
-Activity.create(name: "Alicatado", description: "", ui_color: "purple", project_id: project.id)
-Activity.create(name: "Movimiento de tierras", description: "", ui_color: "green", project_id: project.id)
-Activity.create(name: "Ventanas", description: "", ui_color: "red", project_id: project.id)
-Activity.create(name: "Electricidad", description: "", ui_color: "yellow", project_id: project.id)
-Activity.create(name: "Tuberias", description: "", ui_color: "blue", project_id: project.id)
-Activity.create(name: "Cerraduras", description: "", ui_color: "black", project_id: project.id)
+project.activities.create(
+  name: "Alicatado",
+  planned_start_date: DateTime.now.prev_month.beginning_of_month.to_date,
+  planned_end_date: DateTime.now.prev_month.beginning_of_month.next_day.to_date,
+  start_date: DateTime.now.prev_month.beginning_of_month.to_date,
+  end_date: DateTime.now.prev_month.beginning_of_month.next_day.to_date,
+  obs: ""
+)
+project.activities.create(
+  name: "Movimiento de tierras",
+  planned_start_date: DateTime.now.prev_month.beginning_of_month.next_week.to_date,
+  planned_end_date: DateTime.now.prev_month.beginning_of_month.next_week.next_day.to_date,
+  start_date: DateTime.now.prev_month.beginning_of_month.next_week.to_date,
+  end_date: DateTime.now.prev_month.beginning_of_month.next_week.next_day.to_date,
+  obs: ""
+)
+project.activities.create(
+  name: "Ventanas",
+  planned_start_date: DateTime.now.beginning_of_month.to_date,
+  planned_end_date: DateTime.now.beginning_of_month.next_day.next_day.to_date,
+  start_date: DateTime.now.beginning_of_month.to_date,
+  end_date: DateTime.now.beginning_of_month.next_day.next_day.to_date,
+  obs: ""
+)
+project.activities.create(
+  name: "Electricidad",
+  planned_start_date: DateTime.now.beginning_of_month.next_week.to_date,
+  planned_end_date: DateTime.now.beginning_of_month.next_week.next_day.to_date,
+  start_date: DateTime.now.beginning_of_month.next_week.to_date,
+  end_date: DateTime.now.beginning_of_month.next_week.next_day.to_date,
+  obs: ""
+)
+project.activities.create(
+  name: "Tuberias",
+  planned_start_date: DateTime.now.to_date,
+  planned_end_date: DateTime.now.next_day.next_day.to_date,
+  start_date: DateTime.now.to_date,
+  end_date: DateTime.now.next_day.next_day.to_date,
+  obs: ""
+)
+project.activities.create(
+  name: "Cerraduras",
+  planned_start_date: DateTime.now.next_day.to_date,
+  planned_end_date: DateTime.now.next_day.next_day.to_date,
+  start_date: DateTime.now.next_day.to_date,
+  end_date: DateTime.now.next_day.next_day.to_date,
+  obs: ""
+)
 
 vivienda1 = BuildingUnit.create(name: "Vivienda 1", description: "", ui_color: "grey", project_id: project.id)
 vivienda2 = BuildingUnit.create(name: "Vivienda 2", description: "", ui_color: "grey", project_id: project.id)

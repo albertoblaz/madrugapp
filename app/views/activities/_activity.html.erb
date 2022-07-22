@@ -1,8 +1,12 @@
 <tr>
   <td><%= activity.id %></td>
   <td><%= activity.name %></td>
+  <td><%= activity.planned_start_date %></td>
+  <td><%= activity.planned_end_date %></td>
+  <td><%= activity.start_date %></td>
+  <td><%= activity.end_date %></td>
   <td><%= nil %></td>
-  <td><%= activity.description %></td>
+  <td><%= activity.obs %></td>
   <td>
     <%= link_to "Delete", [activity.project, activity], data: {
       turbo_method: :delete,

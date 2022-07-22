@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_07_21_234554) do
   create_table "activities", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "ui_color"
+    t.string "name", null: false
+    t.string "obs"
+    t.date "planned_start_date"
+    t.date "planned_end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
