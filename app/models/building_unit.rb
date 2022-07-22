@@ -2,6 +2,7 @@ class BuildingUnit < ApplicationRecord
   belongs_to :project
   belongs_to :parent, class_name: 'BuildingUnit', optional: true, foreign_key: :building_unit_id
   has_many :children, class_name: 'BuildingUnit', dependent: :destroy
+  has_many :records
 
   scope :parents, ->(pid) { where(building_unit_id: nil, project_id: pid) }
 

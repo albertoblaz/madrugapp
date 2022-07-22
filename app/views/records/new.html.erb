@@ -1,0 +1,31 @@
+<h1>Create record</h1>
+
+<%= form_with model: [ @project, @building_unit, @building_unit.records.build ] do |form| %>
+  <p>
+    <%= form.label :activity %><br>
+    <%= form.text_field :activity %>
+  </p>
+  <p>
+    <%= form.label :assignee_or_team %><br>
+    <%= form.text_area :assignee_or_team %>
+  </p>
+  <p>
+    <%= form.label :start_date %><br>
+    <%= form.date_field :start_date %>
+  </p>
+  <p>
+    <%= form.label :end_date %><br>
+    <%= form.date_field :end_date %>
+  </p>
+  <p>
+    <%= form.label :is_finished, "Finished?" %><br>
+    <%= form.check_box :is_finished %>
+  </p>
+  <p>
+    <%= form.label :obs, "Obs." %><br>
+    <%= form.text_area :obs, size: "70x5" %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

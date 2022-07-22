@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :activities
-    resources :building_units, :path => "progress"
+
+    get "records", to: "records#index"
+    resources :building_units do
+      resources :records
+    end
   end
 end
