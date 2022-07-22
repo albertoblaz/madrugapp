@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :activities
-    resources :building_units
+    resources :building_units, :path => "progress"
   end
 end
