@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_234554) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "description"
     t.string "image_url"
     t.date "start_date"
