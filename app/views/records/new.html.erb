@@ -1,6 +1,6 @@
 <h1>Create record</h1>
 
-<%= form_with model: [ @project, @building_unit, @building_unit.records.build ] do |form| %>
+<%= form_with model: [ @project, @building_unit, @record ] do |form| %>
   <p>
     <%= form.label :activity %><br>
     <%= form.text_field :activity %>
@@ -18,7 +18,7 @@
     <%= form.date_field :end_date %>
   </p>
   <p>
-    <%= form.label :is_finished, "Finished?" %><br>
+    <%= form.label :is_finished, "Finished" %><br>
     <%= form.check_box :is_finished %>
   </p>
   <p>

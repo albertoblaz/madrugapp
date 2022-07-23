@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.records th:not(:first-child),
+.records td:not(:first-child) {
+  width: 36px;
+  height: 36px;
+}
+
+.records td:not(:first-child) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: ghostwhite;
+  transition: background-color 0.5s;
+}
+
+.records td:not(:first-child) a:hover {
+  background-color: gray;
+  transition: background-color 0.5s;
+}
+.records td:not(:first-child) a:hover::after {
+  content: "+";
+}
+
+.records .record-today {
+  background-color: #ad3d41;
+  color: white;
+}

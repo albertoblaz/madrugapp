@@ -3,7 +3,7 @@
 <span>Project plan</span>
 <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
 
-<table>
+<table class="records">
   <thead>
     <tr>
       <%# First column %>
@@ -12,7 +12,11 @@
       <%# Rest of columns (dates) %>
       <% date_ptr = @project.start_date %>
       <% while date_ptr <= @project.planned_end_date do %>
-        <th><%= date_ptr.day %></th>
+        <% if date_ptr.day == DateTime.now.day %>
+          <th class="record-today"><%= date_ptr.day %></th>
+        <% else %>
+          <th><%= date_ptr.day %></th>
+        <% end %>
         <% date_ptr = date_ptr.next_day %>
       <% end %>
     </tr>
@@ -26,9 +30,21 @@
         <%# Rest of columns (dates) %>
         <% date_ptr = @project.start_date %>
         <% while date_ptr <= @project.planned_end_date do %>
-          <td>
-            <%= link_to "+", new_project_building_unit_record_path(@project, bu) %>
-          </td>
+          <% records_for_bu = @records_map[bu.id] %>
+          <% records_for_date = records_for_bu.filter { |rec| rec.start_date == date_ptr }%>
+          <% if records_for_date.empty? %>
+            <td>
+              <%= link_to "",
+                new_project_building_unit_record_path(@project, bu, date: date_ptr)
+              %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to records_for_date[0].num_resources,
+                edit_project_building_unit_record_path(@project, bu, records_for_date[0])
+              %>
+            </td>
+          <% end %>
           <% date_ptr = date_ptr.next_day %>
         <% end %>
       </tr>

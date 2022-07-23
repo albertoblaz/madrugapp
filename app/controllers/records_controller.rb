@@ -2,7 +2,11 @@ class RecordsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @building_units = @project.building_units
-    @records = Record.all
+    @records_map = {}
+    @building_units.each do |bu|
+      @records_map[bu.id] = bu.records
+    end
+
     #parents = BuildingUnit.parents(params[:project_id])
     #@building_units = BuildingUnit.first.all_children
 =begin
@@ -16,7 +20,7 @@ class RecordsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
-    @record = Record.new
+    @record = Record.new(start_date: params[:date], end_date: params[:date], is_finished: false)
   end
 
   def create
