@@ -30,6 +30,31 @@ class RecordsController < ApplicationController
     redirect_to project_records_path
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @building_unit = BuildingUnit.find(params[:building_unit_id])
+    @record = @building_unit.records.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @building_unit = BuildingUnit.find(params[:building_unit_id])
+    @record = @building_unit.records.find(params[:id])
+    if @record.update(record_params)
+      redirect_to project_records_path
+    else
+      redirect_to project_records_path, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @building_unit = BuildingUnit.find(params[:building_unit_id])
+    @record = @building_unit.records.find(params[:id])
+    @record.destroy
+    redirect_to project_records_path, status: :see_other
+  end
+
   private
 
   def record_params
