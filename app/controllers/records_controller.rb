@@ -26,19 +26,13 @@ class RecordsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
-    @record = Record.new
-  end
-
-  def create
-    @project = Project.find(params[:project_id])
-    @building_unit = BuildingUnit.find(params[:building_unit_id])
-    @record = @building_unit.records.create(create_record_params)
+    @record = @building_unit.records.create(record_params)
     redirect_to project_records_path
   end
 
   private
 
-  def create_record_params
-    params.require(:record).permit(:activity, :assignees, :start_date, :end_date, :is_finished, :obs)
+  def record_params
+    params.require(:record).permit(:activity_id, :assignees, :start_date, :end_date, :is_finished, :obs)
   end
 end

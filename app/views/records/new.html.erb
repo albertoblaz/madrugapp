@@ -2,12 +2,12 @@
 
 <%= form_with model: [ @project, @building_unit, @record ] do |form| %>
   <p>
-    <%= form.label :activity %><br>
-    <%= form.text_field :activity %>
+    <%= form.label :activity_id %><br>
+    <%= form.select :activity_id, @project.activities.map { |act| [act.to_s, act.id] } %>
   </p>
   <p>
-    <%= form.label :assignee_or_team %><br>
-    <%= form.text_area :assignee_or_team %>
+    <%= form.label :assignees %><br>
+    <%= form.text_area :assignees %>
   </p>
   <p>
     <%= form.label :start_date %><br>
