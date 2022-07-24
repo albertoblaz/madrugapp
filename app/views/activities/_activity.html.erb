@@ -5,7 +5,10 @@
   <td><%= activity.planned_end_date %></td>
   <td><%= activity.start_date %></td>
   <td><%= activity.end_date %></td>
-  <td><%= nil %></td>
+  <td>
+    <span>(<%= activity.subcontractors.count %>)</span>
+    <span><%= activity.subcontractors.map { |sub| sub.name }.join(", ") %></span>
+  </td>
   <td><%= activity.obs %></td>
   <td>
     <%= link_to "Delete", [activity.project, activity], data: {
