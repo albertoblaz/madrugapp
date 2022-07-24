@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_22_232342) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_24_172440) do
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
     t.string "obs"
@@ -60,9 +60,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_22_232342) do
     t.index ["building_unit_id"], name: "index_records_on_building_unit_id"
   end
 
+  create_table "subcontractors", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "obs"
+    t.string "ui_color"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_subcontractors_on_project_id"
+  end
+
+  create_table "subcontracts", force: :cascade do |t|
+    t.integer "activity_id", null: false
+    t.integer "subcontractor_id", null: false
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_subcontracts_on_activity_id"
+    t.index ["project_id"], name: "index_subcontracts_on_project_id"
+    t.index ["subcontractor_id"], name: "index_subcontracts_on_subcontractor_id"
+  end
+
   add_foreign_key "activities", "projects"
   add_foreign_key "building_units", "building_units"
   add_foreign_key "building_units", "projects"
   add_foreign_key "records", "activities"
   add_foreign_key "records", "building_units"
+  add_foreign_key "subcontractors", "projects"
+  add_foreign_key "subcontracts", "activities"
+  add_foreign_key "subcontracts", "projects"
+  add_foreign_key "subcontracts", "subcontractors"
 end
