@@ -1,0 +1,29 @@
+<%= form_with model: [ @project, @building_unit, @record ] do |form| %>
+  <p>
+    <%= form.label :activity_id %><br>
+    <%= form.select :activity_id, @project.activities.map { |act| [act.to_s, act.id] } %>
+  </p>
+  <p>
+    <%= form.label :assignees %><br>
+    <%= form.text_area :assignees %>
+  </p>
+  <p>
+    <%= form.label :start_date %><br>
+    <%= form.date_field :start_date %>
+  </p>
+  <p>
+    <%= form.label :end_date %><br>
+    <%= form.date_field :end_date %>
+  </p>
+  <p>
+    <%= form.label :is_finished, "Finished" %><br>
+    <%= form.check_box :is_finished %>
+  </p>
+  <p>
+    <%= form.label :obs, "Obs." %><br>
+    <%= form.text_area :obs, size: "70x5" %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
