@@ -1,5 +1,7 @@
 <h1>Edit record</h1>
 
+<%= link_to "Back", project_records_path %>
+
 <%= render "form" %>
 
 <%= form_with method: "delete", model: [ @project, @building_unit, @record ] do |form| %>
