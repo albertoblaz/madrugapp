@@ -1,5 +1,5 @@
-<h1>Create record</h1>
+<h1><%= t("actions.record.create") %></h1>
 
-<%= link_to "Back", project_records_path %>
+<%= link_to t("nav.back"), project_records_path %>
 
-<%= render "form" %>
+<%= render partial: "form", locals: { action: :create } %>

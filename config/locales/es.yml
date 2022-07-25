@@ -1,0 +1,41 @@
+es:
+  pages:
+    activities: "Actividades"
+    progress: "Progreso"
+  entities:
+    activity: "Actividad"
+    bu: "Unidad de edificio"
+    record: "Registro"
+    subcontractor: "Subcontrata"
+    subcontractors: "Subcontratas"
+    subcontract: "Subcontrato"
+  actions:
+    activity:
+      create: "Crear actividad"
+    record:
+      create: "Crear registro"
+      edit: "Editar registro"
+      update: "Actualizar registro"
+      delete: "Eliminar registro"
+  fields:
+    id: "ID"
+    name: "Nombre"
+    description: "Descripción"
+    color: "Color"
+    planned_start_date: "Fecha de inicio estimada"
+    planned_end_date: "Fecha de fin estimada"
+    start_date: "Fecha de inicio"
+    end_date: "Fecha de fin"
+    obs: "Obs."
+    assignees: "Asignaciones"
+    finished: "Finalizado"
+  nav:
+    back: "Atrás"
+  days:
+    mon: "Lun"
+    tue: "Mar"
+    wed: "Mie"
+    thu: "Jue"
+    fri: "Vie"
+    sat: "Sab"
+    sun: "Dom"

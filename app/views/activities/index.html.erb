@@ -1,4 +1,4 @@
-<h1>Activities</h1>
+<h1><%= t("pages.activities") %></h1>
 
 <span>Project plan</span>
 <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
@@ -10,14 +10,14 @@
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Planned start date</th>
-      <th>Planned end date</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Subcontractors</th>
-      <th>Obs.</th>
+      <th><%= t("fields.id") %></th>
+      <th><%= t("fields.name") %></th>
+      <th><%= t("fields.planned_start_date") %></th>
+      <th><%= t("fields.planned_end_date") %></th>
+      <th><%= t("fields.start_date") %></th>
+      <th><%= t("fields.end_date") %></th>
+      <th><%= t("entities.subcontractor") %></th>
+      <th><%= t("fields.obs") %></th>
       <th>Delete?</th>
     </tr>
   </thead>

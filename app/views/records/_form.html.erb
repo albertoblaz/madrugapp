@@ -1,10 +1,12 @@
+<% action = local_assigns[:action] %>
+
 <%= form_with model: [ @project, @building_unit, @record ] do |form| %>
   <p>
-    <%= form.label :activity_id %><br>
+    <%= form.label :activity_id, t("entities.activity") %><br>
     <%= form.select :activity_id, select_field_list(@project.activities) %>
   </p>
   <p>
-    <%= label :subcontractors, :subcontractors %><br>
+    <%= label :subcontractors, t("entities.subcontractors") %><br>
     <%= text_field nil,
       :subcontractors,
       value: !@record.activity.nil? ? @record.activity.subcontractor_names : nil,
@@ -12,26 +14,26 @@
     %>
   </p>
   <p>
-    <%= form.label :assignees %><br>
+    <%= form.label :assignees, t("fields.assignees") %><br>
     <%= form.text_area :assignees %>
   </p>
   <p>
-    <%= form.label :start_date %><br>
+    <%= form.label :start_date, t("fields.start_date") %><br>
     <%= form.date_field :start_date %>
   </p>
   <p>
-    <%= form.label :end_date %><br>
+    <%= form.label :end_date, t("fields.end_date") %><br>
     <%= form.date_field :end_date %>
   </p>
   <p>
-    <%= form.label :is_finished, "Finished" %><br>
+    <%= form.label :is_finished, t("fields.finished") %><br>
     <%= form.check_box :is_finished %>
   </p>
   <p>
-    <%= form.label :obs, "Obs." %><br>
+    <%= form.label :obs, t("fields.obs") %><br>
     <%= form.text_area :obs, size: "70x5" %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit t("actions.record.#{action}") %>
   </p>
 <% end %>

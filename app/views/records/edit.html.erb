@@ -1,9 +1,9 @@
-<h1>Edit record</h1>
+<h1><%= t("actions.record.edit") %></h1>
 
-<%= link_to "Back", project_records_path %>
+<%= link_to t("nav.back"), project_records_path %>
 
-<%= render "form" %>
+<%= render partial: "form", locals: { action: :update } %>
 
 <%= form_with method: "delete", model: [ @project, @building_unit, @record ] do |form| %>
-  <%= form.submit "Delete" %>
+  <%= form.submit t("actions.record.delete") %>
 <% end %>

@@ -1,4 +1,4 @@
-<h1>Progress</h1>
+<h1><%= t("pages.progress") %></h1>
 
 <span>Project plan</span>
 <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <%# First column %>
-      <th>Building Unit</th>
+      <th><%= t("entities.bu") %></th>
 
       <%# Rest of columns (dates) %>
       <% date = @project.start_date %>
