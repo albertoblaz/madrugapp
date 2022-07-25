@@ -10,14 +10,10 @@
       <th>Building Unit</th>
 
       <%# Rest of columns (dates) %>
-      <% date_ptr = @project.start_date %>
-      <% while date_ptr <= @project.planned_end_date do %>
-        <% if date_ptr.day == DateTime.now.day %>
-          <th class="record-today"><%= date_ptr.day %></th>
-        <% else %>
-          <th><%= date_ptr.day %></th>
-        <% end %>
-        <% date_ptr = date_ptr.next_day %>
+      <% date = @project.start_date %>
+      <% while date <= @project.planned_end_date do %>
+        <%= render partial: "date_header", locals: { date: date } %>
+        <% date = date.next_day %>
       <% end %>
     </tr>
   </thead>
@@ -28,24 +24,20 @@
         <td><%= bu.name %></td>
 
         <%# Rest of columns (dates) %>
-        <% date_ptr = @project.start_date %>
-        <% while date_ptr <= @project.planned_end_date do %>
+        <% date = @project.start_date %>
+        <% while date <= @project.planned_end_date do %>
           <% records_for_bu = @records_map[bu.id] %>
-          <% records_for_date = records_for_bu.filter { |rec| rec.start_date == date_ptr }%>
-          <% if records_for_date.empty? %>
-            <td>
-              <%= link_to "",
-                new_project_building_unit_record_path(@project, bu, date: date_ptr)
-              %>
-            </td>
-          <% else %>
-            <td>
-              <%= link_to records_for_date[0].num_resources,
-                edit_project_building_unit_record_path(@project, bu, records_for_date[0])
-              %>
-            </td>
-          <% end %>
-          <% date_ptr = date_ptr.next_day %>
+          <% records_for_date = records_for_bu.filter { |rec| rec.start_date == date }%>
+          <% record = records_for_date[0] %>
+
+          <%= render partial: "date", locals: {
+            project: @project,
+            bu: bu,
+            record: record,
+            date: date
+          } %>
+
+          <% date = date.next_day %>
         <% end %>
       </tr>
     <% end %>

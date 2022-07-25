@@ -1,0 +1,20 @@
+<% project = local_assigns[:project] %>
+<% bu = local_assigns[:bu] %>
+<% record = local_assigns[:record] %>
+<% date = local_assigns[:date] %>
+
+<% if day_off?(date) %>
+  <td class="record record-off"></td>
+<% elsif record.nil? %>
+  <td class="record record-empty">
+    <%= link_to "",
+      new_project_building_unit_record_path(@project, bu, date: date)
+    %>
+  </td>
+<% else %>
+  <td class="record record-started <%= record.is_finished ? "record-finished" : nil %>">
+    <%= link_to record.num_resources,
+      edit_project_building_unit_record_path(@project, bu, record)
+    %>
+  </td>
+<% end %>

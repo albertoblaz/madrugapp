@@ -18,35 +18,68 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: system-ui, sans-serif;
+}
+
 a {
   text-decoration: none;
 }
 
-.records th:not(:first-child),
-.records td:not(:first-child) {
+.records,
+.records tbody {
+  border-spacing: 0;
+}
+
+.record-header,
+.record {
   width: 36px;
   height: 36px;
 }
 
-.records td:not(:first-child) a {
+.record-header {
+  vertical-align: middle;
+  color: #333;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.record-header-off {
+  background-color: rgb(170, 170, 170);
+}
+.record-header-today {
+  background-color: palevioletred;
+  color: white;
+}
+
+.record a {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: ghostwhite;
+  background-color: transparent;
+  color: #666;
   transition: background-color 0.5s;
 }
-
-.records td:not(:first-child) a:hover {
-  background-color: gray;
+.record a:hover,
+.record a:focus {
+  background-color: paleturquoise;
   transition: background-color 0.5s;
 }
-.records td:not(:first-child) a:hover::after {
+.record:not(.record-started) a:hover::after,
+.record:not(.record-started) a:focus::after {
   content: "+";
 }
 
-.records .record-today {
-  background-color: #ad3d41;
-  color: white;
+.record-empty {
+  background-color: ghostwhite;
+}
+.record-off {
+  background-color: #ccc;
+}
+.record-started {
+  background-color: palegoldenrod;
+}
+.record-finished {
+  background-color: palegreen;
 }

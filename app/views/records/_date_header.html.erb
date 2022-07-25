@@ -1,0 +1,12 @@
+<% date = local_assigns[:date] %>
+<% class_name = today?(date) ?
+  "record-header-today"
+: day_off?(date) ?
+  "record-header-off"
+: nil
+%>
+
+<th class="record-header <%= class_name %>">
+  <div><%= date.strftime("%a") %></div>
+  <div><%= date.day %></div>
+</th>
