@@ -7,4 +7,8 @@ class Activity < ApplicationRecord
   def to_s
     "#{self.id}) #{self.name}"
   end
+
+  def subcontractor_names
+    self.subcontractors.map { |sub| sub.name }.join(", ")
+  end
 end

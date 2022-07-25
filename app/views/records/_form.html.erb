@@ -1,7 +1,15 @@
 <%= form_with model: [ @project, @building_unit, @record ] do |form| %>
   <p>
     <%= form.label :activity_id %><br>
-    <%= form.select :activity_id, @project.activities.map { |act| [act.to_s, act.id] } %>
+    <%= form.select :activity_id, select_field_list(@project.activities) %>
+  </p>
+  <p>
+    <%= label :subcontractors, :subcontractors %><br>
+    <%= text_field nil,
+      :subcontractors,
+      value: !@record.activity.nil? ? @record.activity.subcontractor_names : nil,
+      disabled: true
+    %>
   </p>
   <p>
     <%= form.label :assignees %><br>

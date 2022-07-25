@@ -7,7 +7,7 @@
   <td><%= activity.end_date %></td>
   <td>
     <span>(<%= activity.subcontractors.count %>)</span>
-    <span><%= activity.subcontractors.map { |sub| sub.name }.join(", ") %></span>
+    <span><%= activity.subcontractor_names %></span>
   </td>
   <td><%= activity.obs %></td>
   <td>
