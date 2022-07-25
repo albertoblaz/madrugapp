@@ -26,8 +26,12 @@ class RecordsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
-    @record = @building_unit.records.create(record_params)
-    redirect_to project_records_path
+    @record = @building_unit.records.new(record_params)
+    if @record.save
+      redirect_to project_records_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -43,7 +47,7 @@ class RecordsController < ApplicationController
     if @record.update(record_params)
       redirect_to project_records_path
     else
-      redirect_to project_records_path, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
