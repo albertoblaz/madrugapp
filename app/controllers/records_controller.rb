@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
+  before_action :find_project
+
   def index
-    @project = Project.find(params[:project_id])
     @building_units = @project.building_units
     @records_map = {}
     @building_units.each do |bu|
@@ -18,13 +19,11 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
     @record = Record.new(start_date: params[:date], end_date: params[:date], is_finished: false)
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
     @record = @building_unit.records.new(record_params)
     if @record.save
@@ -35,13 +34,11 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
     @record = @building_unit.records.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
     @record = @building_unit.records.find(params[:id])
     if @record.update(record_params)
@@ -52,7 +49,6 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @building_unit = BuildingUnit.find(params[:building_unit_id])
     @record = @building_unit.records.find(params[:id])
     @record.destroy
@@ -60,6 +56,10 @@ class RecordsController < ApplicationController
   end
 
   private
+
+  def find_project
+    @project = Project.find(params[:project_id])
+  end
 
   def record_params
     params.require(:record).permit(:activity_id, :assignees, :start_date, :end_date, :is_finished, :obs)

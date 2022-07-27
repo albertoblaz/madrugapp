@@ -1,26 +1,28 @@
 class ActivitiesController < ApplicationController
+  before_action :find_project
+
   def index
-    @project = Project.find(params[:project_id])
   end
 
   def new
-    @project = Project.find(params[:project_id])
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @activity = @project.activities.create(create_activity_params)
     redirect_to project_activities_path
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @activity = @project.activities.find(params[:id])
     @activity.destroy
     redirect_to project_activities_path
   end
 
   private
+
+  def find_project
+    @project = Project.find(params[:project_id])
+  end
 
   def create_activity_params
     params.require(:activity).permit(:name, :description, :ui_color)
