@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :activities
 
     get "records", to: "records#index"
+    get "reports", to: "reports#index"
+
     resources :building_units do
       resources :records
     end

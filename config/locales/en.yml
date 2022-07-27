@@ -2,6 +2,7 @@ en:
   pages:
     activities: "Activities"
     progress: "Progress"
+    reports: "Reports"
   entities:
     activity: "Activity"
     bu: "Building Unit"
