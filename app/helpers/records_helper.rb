@@ -4,6 +4,6 @@ module RecordsHelper
   end
 
   def today?(date)
-    date.day == DateTime.now.day
+    date == DateTime.now.to_date
   end
 end
