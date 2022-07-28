@@ -20,15 +20,17 @@
     <li>
       <h2><%= sub.name %></h2>
       <ul>
-      <% sub.activities.each do |act| %>
-        <li>
-          <h3><%= act.name %></h3>
+        <% sub.activities.each do |act| %>
           <% activity_records = @records.select { |rec| rec.activity_id == act.id } %>
-          <% activity_records.each do |ar| %>
-            <div><%= ar.num_resources %></div>
+          <% unless activity_records.empty? %>
+            <li>
+              <h3><%= act.name %></h3>
+              <% activity_records.each do |ar| %>
+                <div><%= ar.num_resources %></div>
+              <% end %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
+        <% end %>
       </ul>
     </li>
   <% end %>
