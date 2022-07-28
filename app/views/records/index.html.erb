@@ -1,45 +1,51 @@
-<h1><%= t("pages.progress") %></h1>
+<main>
+  <div class="container mx-auto mt-8 pb-4">
+    <h1 class="text-xl text-black font-bold pb-5"><%= t("pages.progress") %></h1>
 
-<span>Project plan</span>
-<span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
+    <span>Project plan</span>
+    <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
+  </div>
 
-<table class="records">
-  <thead>
-    <tr>
-      <%# First column %>
-      <th><%= t("entities.bu") %></th>
+  <div class="max-w-full overflow-auto">
+    <table class="records">
+      <thead>
+        <tr>
+          <%# First column %>
+          <th class="record-header-name"><%= t("entities.bu") %></th>
 
-      <%# Rest of columns (dates) %>
-      <% date = @project.start_date %>
-      <% while date <= @project.planned_end_date do %>
-        <%= render partial: "date_header", locals: { date: date } %>
-        <% date = date.next_day %>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @building_units.each do |bu| %>
-      <tr>
-        <%# First column %>
-        <td><%= bu.name %></td>
+          <%# Rest of columns (dates) %>
+          <% date = @project.start_date %>
+          <% while date <= @project.planned_end_date do %>
+            <%= render partial: "date_header", locals: { date: date } %>
+            <% date = date.next_day %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @building_units.each do |bu| %>
+          <tr>
+            <%# First column %>
+            <td class="record-name"><%= bu.name %></td>
 
-        <%# Rest of columns (dates) %>
-        <% date = @project.start_date %>
-        <% while date <= @project.planned_end_date do %>
-          <% records_for_bu = @records_map[bu.id] %>
-          <% records_for_date = records_for_bu.filter { |rec| rec.start_date == date }%>
-          <% record = records_for_date[0] %>
+            <%# Rest of columns (dates) %>
+            <% date = @project.start_date %>
+            <% while date <= @project.planned_end_date do %>
+              <% records_for_bu = @records_map[bu.id] %>
+              <% records_for_date = records_for_bu.filter { |rec| rec.start_date == date }%>
+              <% record = records_for_date[0] %>
 
-          <%= render partial: "date", locals: {
-            project: @project,
-            bu: bu,
-            record: record,
-            date: date
-          } %>
+              <%= render partial: "date", locals: {
+                project: @project,
+                bu: bu,
+                record: record,
+                date: date
+              } %>
 
-          <% date = date.next_day %>
+              <% date = date.next_day %>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</main>

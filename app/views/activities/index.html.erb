@@ -1,27 +1,29 @@
-<h1><%= t("pages.activities") %></h1>
+<main class="container mx-auto mt-8">
+  <h1 class="text-xl text-black font-bold pb-5"><%= t("pages.activities") %></h1>
 
-<span>Project plan</span>
-<span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
+  <span>Project plan</span>
+  <span><%= @project.start_date %> - <%= @project.planned_end_date %></span>
 
-<span style="background: green; color:white;">
-  <%= link_to 'New', new_project_activity_path %>
-</span>
+  <span style="background: green; color:white;">
+    <%= link_to 'New', new_project_activity_path %>
+  </span>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= t("fields.id") %></th>
-      <th><%= t("fields.name") %></th>
-      <th><%= t("fields.planned_start_date") %></th>
-      <th><%= t("fields.planned_end_date") %></th>
-      <th><%= t("fields.start_date") %></th>
-      <th><%= t("fields.end_date") %></th>
-      <th><%= t("entities.subcontractor") %></th>
-      <th><%= t("fields.obs") %></th>
-      <th>Delete?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @project.activities %>
-  </tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t("fields.id") %></th>
+        <th><%= t("fields.name") %></th>
+        <th><%= t("fields.planned_start_date") %></th>
+        <th><%= t("fields.planned_end_date") %></th>
+        <th><%= t("fields.start_date") %></th>
+        <th><%= t("fields.end_date") %></th>
+        <th><%= t("entities.subcontractor") %></th>
+        <th><%= t("fields.obs") %></th>
+        <th>Delete?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @project.activities %>
+    </tbody>
+  </table>
+</main>

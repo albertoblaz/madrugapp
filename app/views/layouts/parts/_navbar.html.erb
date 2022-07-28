@@ -1,17 +1,31 @@
-<header>
-  <%= link_to '/' do %>
-    <%= image_tag '' %>
-  <% end %>
+<header class="bg-slate-900">
+  <div class="container mx-auto py-5 flex items-center justify-between">
+    <nav class="flex items-center gap-4 text-white">
+      <%= link_to '/' do %>
+        <%= image_tag '', class: "w-32 aspect-[5/2]" %>
+      <% end %>
 
-  <nav>
-    <%= link_to project_activities_path do %>
-      <strong><%= @project.name %></strong>
-    <% end %>
+      <%= link_to project_activities_path do %>
+        <strong><%= @project.name %></strong>
+      <% end %>
 
-    &#62;
+      &#62;
 
-    <%= link_to t("pages.activities"), project_activities_path %>
-    <%= link_to t("pages.progress"), project_records_path %>
-    <%= link_to t("pages.reports"), project_reports_path %>
-  </nav>
+      <ul class="flex gap-4">
+        <li>
+          <%= link_to t("pages.activities"), project_activities_path, class: tab_styles(:activities) %>
+        </li>
+        <li>
+          <%= link_to t("pages.progress"), project_records_path, class: tab_styles(:records) %>
+        </li>
+        <li>
+          <%= link_to t("pages.reports"), project_reports_path, class: tab_styles(:reports) %>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <%= image_tag "avatar.jpeg", class: "w-10 h-10 border border-solid border-blue-100 rounded-full" %>
+    </div>
+  </div>
 </header>

@@ -33,8 +33,17 @@ a {
 
 .record-header,
 .record {
-  width: 36px;
-  height: 36px;
+  width: 46px;
+  height: 46px;
+}
+
+.record-header-name,
+.record-name {
+  min-width: 192px;
+}
+
+.record-name {
+  padding: 0 10px;
 }
 
 .record-header {
@@ -42,6 +51,9 @@ a {
   color: #333;
   font-size: 12px;
   text-transform: uppercase;
+  min-width: 46px;
+  min-height: 46px;
+  max-height: 46px;
 }
 .record-header-off {
   background-color: rgb(170, 170, 170);
@@ -73,13 +85,17 @@ a {
 
 .record-empty {
   background-color: ghostwhite;
+  border: 1px solid white;
 }
 .record-off {
   background-color: #ccc;
+  border: 1px solid transparent;
 }
 .record-started {
   background-color: palegoldenrod;
+  border: 1px solid palegoldenrod;
 }
 .record-finished {
   background-color: palegreen;
+  border: 1px solid palegreen;
 }
