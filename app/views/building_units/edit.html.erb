@@ -1,0 +1,15 @@
+<%= turbo_frame_tag dom_id(@building_unit) do %>
+  <%= form_with model: [ @project, @building_unit ], data: { controller: "closeescapeinput" } do |form| %>
+    <div class="flex items-center justify-between">
+      <%= form.text_field :name,
+        autofocus: true,
+        class: "w-full",
+        data: {
+          closeescapeinput_target: "input",
+          action: "keyup->closeescapeinput#escClose",
+        }
+      %>
+      <%= form.submit t("actions.generic.update") %>
+    </div>
+  <% end %>
+<% end %>

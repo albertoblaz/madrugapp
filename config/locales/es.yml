@@ -11,6 +11,9 @@ es:
     subcontractors: "Subcontratas"
     subcontract: "Subcontrato"
   actions:
+    generic:
+      rename: "Renombrar"
+      update: "Actualizar"
     activity:
       create: "Crear actividad"
     record:

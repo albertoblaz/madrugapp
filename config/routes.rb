@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "records", to: "records#index"
     get "reports", to: "reports#index"
 
-    resources :building_units do
+    resources :building_units, only: [:edit, :update] do
       resources :records
     end
   end

@@ -4,6 +4,8 @@ class BuildingUnit < ApplicationRecord
   has_many :children, class_name: 'BuildingUnit', dependent: :destroy
   has_many :records
 
+  validates :name, presence: true
+
   scope :parents, ->(pid) { where(building_unit_id: nil, project_id: pid) }
 
   def all_children

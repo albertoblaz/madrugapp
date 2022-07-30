@@ -1,0 +1,6 @@
+<td class="record-name" id="<%= "#{dom_id(bu)}_td" %>">
+  <%= turbo_frame_tag dom_id(bu), class: "flex items-center justify-between" do %>
+    <%= bu.name %>
+    <%= link_to t("actions.generic.rename"), edit_project_building_unit_path(bu.project_id, bu.id) %>
+  <% end %>
+</td>

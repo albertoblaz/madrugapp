@@ -28,7 +28,7 @@
         <% @building_units.each do |bu| %>
           <tr>
             <%# First column %>
-            <td class="record-name"><%= bu.name %></td>
+            <%= render "building_units/building_unit", bu: bu %>
 
             <%# Rest of columns (dates) %>
             <% date = @project.start_date %>
