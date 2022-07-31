@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_24_172440) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_31_091123) do
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
     t.string "obs"
@@ -60,6 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_24_172440) do
     t.index ["building_unit_id"], name: "index_records_on_building_unit_id"
   end
 
+  create_table "red_days", force: :cascade do |t|
+    t.date "date"
+    t.string "reason"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_red_days_on_project_id"
+  end
+
   create_table "subcontractors", force: :cascade do |t|
     t.string "name", null: false
     t.string "obs"
@@ -86,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_24_172440) do
   add_foreign_key "building_units", "projects"
   add_foreign_key "records", "activities"
   add_foreign_key "records", "building_units"
+  add_foreign_key "red_days", "projects"
   add_foreign_key "subcontractors", "projects"
   add_foreign_key "subcontracts", "activities"
   add_foreign_key "subcontracts", "projects"

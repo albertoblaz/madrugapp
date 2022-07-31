@@ -1,5 +1,5 @@
 module RecordsHelper
-  def day_off?(date)
+  def is_weekend?(date)
     date.saturday? || date.sunday?
   end
 

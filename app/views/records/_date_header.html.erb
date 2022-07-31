@@ -1,7 +1,10 @@
-<% date = local_assigns[:date] %>
+<%
+  date = local_assigns[:date]
+  is_red_day = local_assigns[:is_red_day]
+%>
 <% class_name = today?(date) ?
   "record-header-today"
-: day_off?(date) ?
+: is_red_day || is_weekend?(date) ?
   "record-header-off"
 : nil
 %>

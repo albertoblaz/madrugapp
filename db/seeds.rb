@@ -1,18 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 project = Project.create(
   name: "Test Project",
   description: "Ejemplo de proyecto usado para el desarrollo",
   image_url: "",
-  start_date: DateTime.now.beginning_of_month,
-  planned_end_date: DateTime.now.end_of_month
+  start_date: Date.parse("2022-07-01"),
+  planned_end_date: Date.parse("2023-03-31"),
 )
+
+project.red_days.create(date: Date.parse("2022-07-25"), reason: "")
+project.red_days.create(date: Date.parse("2022-08-15"), reason: "Dia de todas las virgenes")
+project.red_days.create(date: Date.parse("2022-08-16"), reason: "")
+project.red_days.create(date: Date.parse("2022-08-17"), reason: "")
+project.red_days.create(date: Date.parse("2022-08-18"), reason: "")
+project.red_days.create(date: Date.parse("2022-08-19"), reason: "")
+project.red_days.create(date: Date.parse("2022-10-12"), reason: "Fiesta Nacional")
+project.red_days.create(date: Date.parse("2022-10-31"), reason: "Dia de muertos")
+project.red_days.create(date: Date.parse("2022-11-01"), reason: "Dia de todos los santos")
+project.red_days.create(date: Date.parse("2022-11-09"), reason: "")
+project.red_days.create(date: Date.parse("2022-12-06"), reason: "Dia de la Constitucion")
+project.red_days.create(date: Date.parse("2022-12-08"), reason: "Dia de la Inmaculada")
+project.red_days.create(date: Date.parse("2022-12-23"), reason: "")
+project.red_days.create(date: Date.parse("2022-12-26"), reason: "Boxing day")
+project.red_days.create(date: Date.parse("2023-01-02"), reason: "")
+project.red_days.create(date: Date.parse("2023-01-06"), reason: "")
 
 act1 = Activity.create(
   name: "Alicatado",

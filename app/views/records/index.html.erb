@@ -16,7 +16,10 @@
           <%# Rest of columns (dates) %>
           <% date = @project.start_date %>
           <% while date <= @project.planned_end_date do %>
-            <%= render partial: "date_header", locals: { date: date } %>
+            <%= render partial: "date_header", locals: {
+              date: date,
+              is_red_day: @red_days.include?(date)
+            } %>
             <% date = date.next_day %>
           <% end %>
         </tr>
@@ -38,7 +41,8 @@
                 project: @project,
                 bu: bu,
                 record: record,
-                date: date
+                date: date,
+                is_red_day: @red_days.include?(date)
               } %>
 
               <% date = date.next_day %>

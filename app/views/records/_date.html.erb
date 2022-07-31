@@ -2,8 +2,9 @@
 <% bu = local_assigns[:bu] %>
 <% record = local_assigns[:record] %>
 <% date = local_assigns[:date] %>
+<% is_red_day = local_assigns[:is_red_day] %>
 
-<% if day_off?(date) %>
+<% if is_red_day || is_weekend?(date) %>
   <td class="record record-off"></td>
 <% elsif record.nil? %>
   <td class="record record-empty">

@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
 
   def index
     @building_units = @project.building_units
+    @red_days = @project.red_days.map { |rd| rd.date }
     @records_map = {}
     @building_units.each do |bu|
       @records_map[bu.id] = bu.records
@@ -58,7 +59,7 @@ class RecordsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find(params[:project_id])
+    @project = Project.includes(:red_days).find(params[:project_id])
   end
 
   def record_params
