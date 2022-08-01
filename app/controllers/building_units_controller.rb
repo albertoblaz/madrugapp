@@ -17,6 +17,13 @@ class BuildingUnitsController < ApplicationController
     end
   end
 
+  def destroy
+    @building_unit.destroy
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   def find_project
@@ -28,6 +35,6 @@ class BuildingUnitsController < ApplicationController
   end
 
   def bu_params
-    params.require(:building_unit).permit(:name)
+    params.require(:building_unit).permit(:name, :project_id)
   end
 end
